@@ -1,0 +1,20 @@
+.experience {
+  min-height: 100vh;
+  padding: 6rem 0;
+  position: relative;
+}
+
+.experience-content {
+  max-width: 800px;
+}
+
+.experience-timeline {
+  margin-top: 2rem;
+}
+
+@media (max-width: 768px) {
+  .experience {
+    padding: 4rem 0;
+  }
+}
+

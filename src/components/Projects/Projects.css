@@ -1,0 +1,16 @@
+.projects {
+  min-height: 100vh;
+  padding: 6rem 0;
+  position: relative;
+}
+
+.projects-grid {
+  margin-top: 3rem;
+}
+
+@media (max-width: 768px) {
+  .projects {
+    padding: 4rem 0;
+  }
+}
+
