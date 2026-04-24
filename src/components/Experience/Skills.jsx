@@ -49,6 +49,17 @@ const Skills = () => {
             <li>Adobe Premiere Pro</li>
           </ul>
         </div>
+        <div className="skill-category">
+          <h4>AI Tools</h4>
+          <ul>
+            <li>Cursor</li>
+            <li>Claude</li>
+            <li>ChatGPT</li>
+            <li>Gemini</li>
+            <li>Grok</li>
+            <li>Perplexity</li>
+          </ul>
+        </div>
       </div>
     </div>
   );

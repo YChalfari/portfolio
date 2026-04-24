@@ -1,5 +1,6 @@
 import ScrollIndicator from '../ScrollIndicator/ScrollIndicator';
 import './About.css';
+import myPhoto from '../../assets/me.jpg';
 
 const About = () => {
   return (
@@ -32,7 +33,7 @@ const About = () => {
         <div className="about-image">
           <div className="image-wrapper">
             <div className="image-placeholder">
-              <span>Your Photo</span>
+              <img src={myPhoto} alt="My Photo" />
             </div>
           </div>
         </div>
