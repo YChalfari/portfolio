@@ -79,6 +79,17 @@
   animation: fadeIn 0.3s ease;
 }
 
+.project-highlights {
+  margin: 0 0 1.5rem;
+  padding-left: 1.25rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.project-highlights li + li {
+  margin-top: 0.5rem;
+}
+
 .project-links {
   display: flex;
   gap: 1rem;

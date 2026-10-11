@@ -11,7 +11,7 @@ const ScrollIndicator = ({ currentSectionId, isLastSection = false }) => {
     "hero",
     "about",
     "experience",
-    // 'projects',
+    "projects",
     "references",
     "contact",
   ];

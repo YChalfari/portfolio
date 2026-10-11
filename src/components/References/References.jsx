@@ -33,7 +33,7 @@ const References = () => {
   return (
     <section id="references" className="references section">
       <h2 className="section-title">
-        <span className="section-number">03.</span> References
+        <span className="section-number">04.</span> References
       </h2>
       <div className="references-content">
         <p className="references-description">

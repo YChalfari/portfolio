@@ -5,7 +5,7 @@ const sections = [
   { id: 'hero', label: 'Home', icon: '🏠', abbrev: 'Home' },
   { id: 'about', label: 'About', icon: '👤', abbrev: 'About' },
   { id: 'experience', label: 'Experience', icon: '💼', abbrev: 'Exp' },
-  // { id: 'projects', label: 'Projects', icon: '📦', abbrev: 'Proj' },
+  { id: 'projects', label: 'Projects', icon: '📦', abbrev: 'Proj' },
   { id: 'references', label: 'References', icon: '⭐', abbrev: 'Ref' },
   { id: 'contact', label: 'Contact', icon: '📞', abbrev: 'Cont' },
 ];

@@ -27,7 +27,18 @@ const ProjectCard = ({ project }) => {
       </div>
       {isExpanded && (
         <div className="project-expanded">
-          <ProjectGallery images={project.images} projectTitle={project.title} />
+          {project.highlights?.length > 0 && (
+            <ul className="project-highlights">
+              {project.highlights.map((highlight) => (
+                <li key={highlight}>{highlight}</li>
+              ))}
+            </ul>
+          )}
+          <ProjectGallery
+            images={project.images}
+            media={project.media}
+            projectTitle={project.title}
+          />
           <div className="project-links">
             {project.github && (
               <a
