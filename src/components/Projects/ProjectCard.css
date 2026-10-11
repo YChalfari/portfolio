@@ -1,16 +1,80 @@
 .project-card {
+  position: relative;
+  overflow: hidden;
   background: var(--bg-secondary);
   border: 1px solid var(--border-color);
   border-radius: 4px;
   padding: 2rem;
-  transition: all 0.3s ease;
+  transition: border-color var(--transition-pop), box-shadow var(--transition-pop), transform var(--transition-pop);
   margin-bottom: 2rem;
+}
+
+.project-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: radial-gradient(
+    52px circle at var(--spot-x, -80px) var(--spot-y, -80px),
+    rgba(79, 195, 247, 0.7) 0%,
+    rgba(79, 195, 247, 0.22) 32%,
+    transparent 68%
+  );
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  pointer-events: none;
+}
+
+.project-card:hover::before {
+  opacity: 1;
+}
+
+.project-card > *:not(.project-spot-layer) {
+  position: relative;
+  z-index: 1;
+}
+
+.project-spot-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.project-spot-trail {
+  position: absolute;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(
+    circle,
+    rgba(79, 195, 247, 0.55) 0%,
+    rgba(79, 195, 247, 0.16) 38%,
+    transparent 70%
+  );
+  pointer-events: none;
+  animation: spot-fade 1s linear forwards;
+}
+
+@keyframes spot-fade {
+  from { opacity: 1; }
+  to { opacity: 0; }
 }
 
 .project-card:hover {
   border-color: var(--accent-color);
-  transform: translateY(-4px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transform: scale(1.02);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
+}
+
+.project-card:has(.gallery-main:hover) {
+  transform: none;
+}
+
+.project-summary {
+  cursor: pointer;
 }
 
 .project-header {
@@ -70,6 +134,7 @@
   font-family: var(--font-mono);
   font-size: 0.75rem;
   color: var(--accent-color);
+  cursor: pointer;
 }
 
 .project-expanded {
@@ -108,13 +173,13 @@
   font-family: var(--font-mono);
   font-size: 0.875rem;
   border-radius: 4px;
-  transition: all 0.3s ease;
+  transition: background 0.18s ease, color 0.18s ease, transform var(--transition-pop);
 }
 
 .project-link:hover {
   background: var(--accent-color);
   color: var(--bg-primary);
-  transform: translateY(-2px);
+  transform: scale(1.03);
 }
 
 @keyframes fadeIn {

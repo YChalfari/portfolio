@@ -29,7 +29,7 @@ const Hero = () => {
           I build exceptional digital experiences with clean code and thoughtful design.
         </p>
         <button className="hero-cta" onClick={scrollToAbout}>
-          Learn More
+          <span className="hero-cta-label">Learn More</span>
         </button>
       </div>
       <ScrollIndicator currentSectionId="hero" />

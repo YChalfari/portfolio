@@ -58,7 +58,7 @@ a {
 }
 
 a:hover {
-  color: var(--accent-secondary);
+  color: var(--text-primary);
 }
 
 /* Headings */

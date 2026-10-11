@@ -35,11 +35,12 @@
 .experience-company {
   color: var(--accent-color);
   text-decoration: none;
-  transition: opacity var(--transition-fast);
+  cursor: pointer;
+  transition: color var(--transition-fast);
 }
 
 .experience-company:hover {
-  opacity: 0.8;
+  color: var(--text-primary);
 }
 
 .experience-date {
@@ -99,13 +100,14 @@
   font-size: 0.875rem;
   font-family: var(--font-mono);
   color: var(--accent-color);
-  transition: all var(--transition-fast);
+  cursor: pointer;
+  transition: transform var(--transition-pop), background var(--transition-fast), border-color var(--transition-fast);
 }
 
 .tech-tag:hover {
   background: var(--bg-secondary);
   border-color: var(--accent-color);
-  transform: translateY(-1px);
+  transform: scale(1.08);
 }
 
 /* Images Gallery Styles */
@@ -143,8 +145,8 @@
 
 .experience-image:hover {
   border-color: var(--accent-color);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(79, 195, 247, 0.2);
+  transform: scale(1.03);
+  box-shadow: 0 8px 20px rgba(79, 195, 247, 0.16);
 }
 
 /* Links Styles */
@@ -169,30 +171,48 @@
 }
 
 .experience-link {
+  position: relative;
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
   color: var(--accent-color);
   text-decoration: none;
   font-size: 0.9375rem;
-  transition: all var(--transition-fast);
+  transition: color 0.18s ease;
   width: fit-content;
+}
+
+.experience-link::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -0.15rem;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  transform: translateX(-50%) scaleX(0);
+  transform-origin: center;
+  transition: transform 0.18s ease;
 }
 
 .experience-link:hover {
   color: var(--text-primary);
-  transform: translateX(4px);
+}
+
+.experience-link:hover::after {
+  transform: translateX(-50%) scaleX(1);
 }
 
 .link-arrow {
+  display: inline-block;
   font-size: 0.875rem;
   opacity: 0.7;
-  transition: all var(--transition-fast);
+  transition: opacity 0.18s ease, transform var(--transition-pop);
 }
 
 .experience-link:hover .link-arrow {
   opacity: 1;
-  transform: translate(2px, -2px);
+  transform: rotate(45deg);
 }
 
 @media (max-width: 768px) {

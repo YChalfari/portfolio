@@ -52,9 +52,15 @@
   font-family: var(--font-mono);
   font-size: 0.875rem;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: color 0.18s ease;
   position: relative;
   overflow: hidden;
+}
+
+.hero-cta-label {
+  position: relative;
+  z-index: 1;
+  display: inline-block;
 }
 
 .hero-cta::before {
@@ -65,7 +71,7 @@
   width: 100%;
   height: 100%;
   background: var(--accent-color);
-  transition: left 0.3s ease;
+  transition: left 0.18s ease;
   z-index: -1;
 }
 
@@ -75,6 +81,17 @@
 
 .hero-cta:hover::before {
   left: 0;
+}
+
+.hero-cta:hover .hero-cta-label {
+  animation: cta-wobble 0.4s ease;
+}
+
+@keyframes cta-wobble {
+  0% { transform: rotate(0deg); }
+  30% { transform: rotate(-2.5deg); }
+  65% { transform: rotate(2deg); }
+  100% { transform: rotate(0deg); }
 }
 
 

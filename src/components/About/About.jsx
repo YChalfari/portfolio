@@ -3,6 +3,21 @@ import './About.css';
 import myPhoto from '../../assets/me.jpg';
 
 const About = () => {
+  const followPortrait = (event) => {
+    const rect = event.currentTarget.getBoundingClientRect();
+    const x = (event.clientX - rect.left) / rect.width - 0.5;
+    const y = (event.clientY - rect.top) / rect.height - 0.5;
+    event.currentTarget.style.setProperty('--shift-x', `${x * 32}px`);
+    event.currentTarget.style.setProperty('--shift-y', `${y * 32}px`);
+    event.currentTarget.style.setProperty('--tilt', `${x * 6}deg`);
+  };
+
+  const resetPortrait = (event) => {
+    event.currentTarget.style.setProperty('--shift-x', '0px');
+    event.currentTarget.style.setProperty('--shift-y', '0px');
+    event.currentTarget.style.setProperty('--tilt', '0deg');
+  };
+
   return (
     <section id="about" className="about section">
       <h2 className="section-title">
@@ -31,9 +46,15 @@ const About = () => {
           </ul>
         </div>
         <div className="about-image">
-          <div className="image-wrapper">
+          <div
+            className="image-wrapper"
+            onMouseMove={followPortrait}
+            onMouseLeave={resetPortrait}
+          >
             <div className="image-placeholder">
-              <img src={myPhoto} alt="My Photo" />
+              <div className="portrait-motion">
+                <img src={myPhoto} alt="My Photo" />
+              </div>
             </div>
           </div>
         </div>

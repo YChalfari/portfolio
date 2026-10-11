@@ -12,6 +12,7 @@ const References = () => {
       email: 'tzach@faintlines.com',
       phone: '+972 (050) 952-9937',
     },
+    /*
     {
       name: 'Gilad Landau',
       title: 'CTO',
@@ -20,6 +21,7 @@ const References = () => {
       linkedinUrl: 'https://www.linkedin.com/in/giladlandau/',
       phone: '+972 (052) 667-7889',
     },
+    */
     {
       name: 'Mordi Ben',
       title: 'Instructor',

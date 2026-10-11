@@ -1,29 +1,65 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import ProjectGallery from './ProjectGallery';
 import './ProjectCard.css';
 
 const ProjectCard = ({ project }) => {
   const [isExpanded, setIsExpanded] = useState(false);
+  const trailLayerRef = useRef(null);
+  const lastDropRef = useRef(null);
+
+  const moveSpotlight = (event) => {
+    const card = event.currentTarget;
+    const rect = card.getBoundingClientRect();
+    const x = event.clientX - rect.left;
+    const y = event.clientY - rect.top;
+    card.style.setProperty('--spot-x', `${x}px`);
+    card.style.setProperty('--spot-y', `${y}px`);
+
+    const last = lastDropRef.current;
+    if (last && Math.hypot(x - last.x, y - last.y) < 14) return;
+    lastDropRef.current = { x, y };
+
+    const trail = trailLayerRef.current;
+    if (!trail) return;
+    const dot = document.createElement('span');
+    dot.className = 'project-spot-trail';
+    dot.style.left = `${x}px`;
+    dot.style.top = `${y}px`;
+    dot.addEventListener('animationend', () => dot.remove());
+    trail.appendChild(dot);
+  };
+
+  const toggleExpanded = () => setIsExpanded((open) => !open);
 
   return (
-    <div className={`project-card ${isExpanded ? 'expanded' : ''}`}>
-      <div className="project-header">
-        <h3 className="project-title">{project.title}</h3>
-        <button
-          className="project-toggle"
-          onClick={() => setIsExpanded(!isExpanded)}
-          aria-label={isExpanded ? 'Collapse project' : 'Expand project'}
-        >
-          {isExpanded ? '−' : '+'}
-        </button>
-      </div>
-      <p className="project-description">{project.description}</p>
-      <div className="project-tech">
-        {project.tech.map((tech, index) => (
-          <span key={index} className="tech-tag">
-            {tech}
-          </span>
-        ))}
+    <div
+      className={`project-card ${isExpanded ? 'expanded' : ''}`}
+      onMouseMove={moveSpotlight}
+    >
+      <div className="project-spot-layer" ref={trailLayerRef} />
+      <div className="project-summary" onClick={toggleExpanded}>
+        <div className="project-header">
+          <h3 className="project-title">{project.title}</h3>
+          <button
+            className="project-toggle"
+            onClick={(event) => {
+              event.stopPropagation();
+              toggleExpanded();
+            }}
+            aria-label={isExpanded ? 'Collapse project' : 'Expand project'}
+            aria-expanded={isExpanded}
+          >
+            {isExpanded ? '−' : '+'}
+          </button>
+        </div>
+        <p className="project-description">{project.description}</p>
+        <div className="project-tech">
+          {project.tech.map((tech, index) => (
+            <span key={index} className="tech-tag">
+              {tech}
+            </span>
+          ))}
+        </div>
       </div>
       {isExpanded && (
         <div className="project-expanded">
