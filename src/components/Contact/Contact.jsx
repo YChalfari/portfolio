@@ -20,6 +20,7 @@ const Contact = () => {
         </svg>
       ),
     },
+    /*
     {
       name: 'Twitter',
       url: 'https://twitter.com',
@@ -29,6 +30,7 @@ const Contact = () => {
         </svg>
       ),
     },
+    */
     {
       name: 'Email',
       url: 'mailto:your.email@example.com',

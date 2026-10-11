@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { createPortal } from 'react-dom';
 import './ProjectGallery.css';
 
 function normalizeMedia(item, index) {
@@ -130,29 +131,44 @@ const ProjectGallery = ({ images, media, projectTitle }) => {
         )}
       </div>
 
-      {isModalOpen && (
+      {isModalOpen && createPortal(
         <div className="gallery-modal" onClick={closeModal}>
+          <button className="gallery-modal-close" onClick={closeModal} aria-label="Close gallery">
+            ×
+          </button>
+          {items.length > 1 && (
+            <>
+              <button
+                className="gallery-modal-nav gallery-modal-prev"
+                onClick={(event) => {
+                  event.stopPropagation();
+                  prevModalImage();
+                }}
+                aria-label="Previous image"
+              >
+                ‹
+              </button>
+              <button
+                className="gallery-modal-nav gallery-modal-next"
+                onClick={(event) => {
+                  event.stopPropagation();
+                  nextModalImage();
+                }}
+                aria-label="Next image"
+              >
+                ›
+              </button>
+            </>
+          )}
           <div className="gallery-modal-content" onClick={(e) => e.stopPropagation()}>
-            <button className="gallery-modal-close" onClick={closeModal} aria-label="Close gallery">
-              ×
-            </button>
             {renderVisual(modalItem, { inModal: true })}
             {modalItem.caption && <p className="gallery-modal-caption">{modalItem.caption}</p>}
-            {items.length > 1 && (
-              <>
-                <button className="gallery-modal-nav gallery-modal-prev" onClick={prevModalImage} aria-label="Previous image">
-                  ‹
-                </button>
-                <button className="gallery-modal-nav gallery-modal-next" onClick={nextModalImage} aria-label="Next image">
-                  ›
-                </button>
-              </>
-            )}
             <div className="gallery-modal-counter">
               {modalIndex + 1} / {items.length}
             </div>
           </div>
-        </div>
+        </div>,
+        document.body
       )}
     </>
   );
