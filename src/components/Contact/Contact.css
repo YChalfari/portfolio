@@ -3,10 +3,6 @@
   padding: 6rem 0 4rem;
   display: flex;
   flex-direction: column;
-  opacity: 0;
-  transform: translateY(30px);
-  animation: fadeInUp 0.8s ease-out forwards;
-  animation-delay: 0.2s;
 }
 
 .contact-content {

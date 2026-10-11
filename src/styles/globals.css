@@ -98,6 +98,13 @@ img {
   display: block;
 }
 
+.section {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 0.8s ease-out forwards;
+  animation-delay: 0.2s;
+}
+
 /* Animations */
 @keyframes fadeInUp {
   from {
