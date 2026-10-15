@@ -1,68 +1,55 @@
-import ScrollIndicator from '../ScrollIndicator/ScrollIndicator';
 import './About.css';
-import myPhoto from '../../assets/me.jpg';
+
+const stack = [
+  { label: 'Languages', items: ['TypeScript', 'JavaScript', 'Python', 'SQL'] },
+  { label: 'Frontend', items: ['React', 'CSS', 'Redux', 'MobX'] },
+  { label: 'Product', items: ['FastAPI', 'Node.js', 'WebRTC'] },
+  { label: 'Data and ops', items: ['MongoDB', 'Redis', 'Docker', 'Git', 'Firebase', 'GitHub Actions', 'Google Cloud'] },
+  { label: 'Tests', items: ['Jest', 'pytest'] },
+];
 
 const About = () => {
-  const followPortrait = (event) => {
-    const rect = event.currentTarget.getBoundingClientRect();
-    const x = (event.clientX - rect.left) / rect.width - 0.5;
-    const y = (event.clientY - rect.top) / rect.height - 0.5;
-    event.currentTarget.style.setProperty('--shift-x', `${x * 32}px`);
-    event.currentTarget.style.setProperty('--shift-y', `${y * 32}px`);
-    event.currentTarget.style.setProperty('--tilt', `${x * 6}deg`);
-  };
-
-  const resetPortrait = (event) => {
-    event.currentTarget.style.setProperty('--shift-x', '0px');
-    event.currentTarget.style.setProperty('--shift-y', '0px');
-    event.currentTarget.style.setProperty('--tilt', '0deg');
-  };
-
   return (
     <section id="about" className="about section">
-      <h2 className="section-title">
-        <span className="section-number">01.</span> About Me
-      </h2>
-      <div className="about-content">
-        <div className="about-text">
+      <header className="section-heading">
+        <span className="section-index">01</span>
+        <h2>About</h2>
+        <span className="section-hebrew" lang="he">אודות</span>
+      </header>
+      <div className="about-layout">
+        <div className="about-copy">
           <p>
-            Hello! I'm a software engineer based in Central Israel, specializing in building
-            exceptional digital experiences. I have a passion for creating clean, efficient code
-            and solving complex problems.
+            I like the part of a product that has to stay correct. Who can see a record,
+            what gets saved, and what happens when two people edit it at once.
+            English and Hebrew are both native languages for me.
           </p>
           <p>
-            I enjoy turning ideas into reality through elegant solutions. Whether it's a web
-            application, a mobile app, automating workflows, or a backend service, I love the challenge of bringing
-            concepts to life.
+            At Faintlines that meant React features, Python services, CLI tools, and the
+            tests around them. I onboarded developers and wrote the process down, so the
+            next person could pick the work up.
           </p>
-          <p>Here are a few technologies I've been working with recently:</p>
-          <ul className="tech-list">
-            <li>JavaScript (ES6+)</li>
-            <li>React</li>
-            <li>Node.js</li>
-            <li>TypeScript</li>
-            <li>Python</li>
-            <li>Git</li>
-          </ul>
+          <h3>How I work with models</h3>
+          <p>
+            On Family Recipes the useful parts are an i18n foundation with a Hebrew
+            translation, and AI that drafts, suggests, and answers from the book. A model
+            can draft. A person accepts it before it becomes the record.
+          </p>
         </div>
-        <div className="about-image">
-          <div
-            className="image-wrapper"
-            onMouseMove={followPortrait}
-            onMouseLeave={resetPortrait}
-          >
-            <div className="image-placeholder">
-              <div className="portrait-motion">
-                <img src={myPhoto} alt="My Photo" />
-              </div>
+        <dl className="stack">
+          {stack.map((group) => (
+            <div key={group.label}>
+              <dt>{group.label}</dt>
+              <dd>{group.items.join(' · ')}</dd>
             </div>
+          ))}
+          <div>
+            <dt>Also</dt>
+            <dd>Laravel, PHP, Next.js</dd>
           </div>
-        </div>
+        </dl>
       </div>
-      <ScrollIndicator currentSectionId="about" />
     </section>
   );
 };
 
 export default About;
-

@@ -2,12 +2,11 @@ import { useState, useEffect } from 'react';
 import './SideNav.css';
 
 const sections = [
-  { id: 'hero', label: 'Home', icon: '🏠', abbrev: 'Home' },
-  { id: 'about', label: 'About', icon: '👤', abbrev: 'About' },
-  { id: 'experience', label: 'Experience', icon: '💼', abbrev: 'Exp' },
-  { id: 'projects', label: 'Projects', icon: '📦', abbrev: 'Proj' },
-  { id: 'references', label: 'References', icon: '⭐', abbrev: 'Ref' },
-  { id: 'contact', label: 'Contact', icon: '📞', abbrev: 'Cont' },
+  { id: 'hero', label: 'Home', abbrev: 'Home' },
+  { id: 'about', label: 'About', abbrev: 'About' },
+  { id: 'experience', label: 'Experience', abbrev: 'Exp' },
+  { id: 'projects', label: 'Projects', abbrev: 'Work' },
+  { id: 'contact', label: 'Contact', abbrev: 'Mail' },
 ];
 
 const SideNav = () => {
@@ -68,7 +67,6 @@ const SideNav = () => {
                 aria-label={`Navigate to ${section.label}`}
               >
                 <span className="nav-dot"></span>
-                <span className="nav-icon" aria-hidden="true">{section.icon}</span>
                 <span className="nav-label">{section.label}</span>
                 <span className="nav-label-abbrev">{section.abbrev}</span>
               </button>

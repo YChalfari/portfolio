@@ -30,11 +30,10 @@
   }
 }
 
-/* Mobile - remove left padding, add bottom padding for bottom nav */
-@media (max-width: 768px) {
+/* Bottom nav takes over at the same breakpoint as SideNav */
+@media (max-width: 1000px) {
   .main-content {
-    padding: 0 1rem;
-    /* Space for bottom navigation bar + safe area */
+    padding: 0 1.25rem;
     padding-bottom: calc(80px + env(safe-area-inset-bottom));
   }
 }

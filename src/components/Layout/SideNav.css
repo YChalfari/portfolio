@@ -67,7 +67,7 @@
 }
 
 .nav-label {
-  opacity: 0.4;
+  opacity: 0.72;
   transition: opacity 0.18s ease, color 0.18s ease;
   white-space: nowrap;
 }

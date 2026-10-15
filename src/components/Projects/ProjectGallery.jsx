@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { createPortal } from 'react-dom';
+import Chevron from '../Chevron';
+import CaptionedVideo from '../CaptionedVideo';
 import './ProjectGallery.css';
 
 function normalizeMedia(item, index) {
@@ -10,6 +12,7 @@ function normalizeMedia(item, index) {
     type: item.type || 'image',
     src: item.src,
     poster: item.poster,
+    captions: item.captions,
     caption: item.caption,
     alt: item.alt || `Image ${index + 1}`,
   };
@@ -57,10 +60,12 @@ const ProjectGallery = ({ images, media, projectTitle }) => {
   const renderVisual = (item, { inModal = false } = {}) => {
     if (item.type === 'video') {
       return (
-        <video
-          className={inModal ? 'gallery-modal-image' : 'gallery-main-image gallery-main-video'}
+        <CaptionedVideo
+          className={inModal ? '' : 'captioned-video-fill'}
+          videoClassName={inModal ? 'gallery-modal-image' : 'gallery-main-image gallery-main-video'}
           src={item.src}
           poster={item.poster}
+          captions={item.captions}
           muted={!inModal}
           loop
           playsInline
@@ -98,7 +103,7 @@ const ProjectGallery = ({ images, media, projectTitle }) => {
                 }}
                 aria-label="Previous image"
               >
-                ‹
+                <Chevron direction="prev" />
               </button>
               <button
                 className="gallery-nav gallery-next"
@@ -108,7 +113,7 @@ const ProjectGallery = ({ images, media, projectTitle }) => {
                 }}
                 aria-label="Next image"
               >
-                ›
+                <Chevron direction="next" />
               </button>
             </>
           )}
@@ -146,7 +151,7 @@ const ProjectGallery = ({ images, media, projectTitle }) => {
                 }}
                 aria-label="Previous image"
               >
-                ‹
+                <Chevron direction="prev" />
               </button>
               <button
                 className="gallery-modal-nav gallery-modal-next"
@@ -156,7 +161,7 @@ const ProjectGallery = ({ images, media, projectTitle }) => {
                 }}
                 aria-label="Next image"
               >
-                ›
+                <Chevron direction="next" />
               </button>
             </>
           )}

@@ -21,6 +21,7 @@ const ExperienceItem = ({ experience }) => {
         </h3>
         <span className="experience-date">{experience.date}</span>
       </div>
+      {experience.note && <p className="experience-note">{experience.note}</p>}
       <ul className="experience-details">
         {experience.achievements.map((achievement, index) => (
           <li key={index}>{achievement}</li>
