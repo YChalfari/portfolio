@@ -35,6 +35,13 @@
   background: var(--text-tertiary);
 }
 
+@media (max-width: 700px) {
+  .eyebrow-location,
+  .eyebrow-location-dot {
+    display: none;
+  }
+}
+
 .hero-name {
   display: flex;
   align-items: center;
@@ -63,11 +70,19 @@
 }
 
 .lede {
-  max-width: 38rem;
+  max-width: 40rem;
+  margin-bottom: 1.75rem;
+}
+
+.lede p {
   font-size: 1.15rem;
   line-height: 1.65;
   color: var(--text-secondary);
-  margin-bottom: 1.75rem;
+  margin-bottom: 1rem;
+}
+
+.lede p:last-child {
+  margin-bottom: 0;
 }
 
 .proof {
@@ -129,7 +144,19 @@
     padding-top: 2.5rem;
   }
 
+  .hero-copy {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .hero-actions {
+    order: 1;
+    margin-bottom: 1.75rem;
+  }
+
   .proof {
+    order: 2;
     grid-template-columns: 1fr;
+    margin-bottom: 0;
   }
 }
